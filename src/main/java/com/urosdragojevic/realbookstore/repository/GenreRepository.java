@@ -25,6 +25,7 @@ public class GenreRepository {
         this.dataSource = dataSource;
     }
 
+
     public List<Genre> getAll() {
         List<Genre> genreList = new ArrayList<>();
         String query = "SELECT id, name FROM genres";
@@ -36,9 +37,12 @@ public class GenreRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            LOG.error("Getting book list failed!");
         }
         return genreList;
     }
+
+
 
     public List<Genre> getAllForBook(int bookId) {
         List<Genre> genreList = new ArrayList<>();
@@ -51,6 +55,7 @@ public class GenreRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            LOG.warn("Getting genres for book with id " + bookId + " failed!");
         }
         return genreList;
     }
